@@ -3,9 +3,11 @@ import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import Date from '../components/date';
 
 export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData();
+  console.log('allPostData =====>', allPostsData)
   return {
     props: {
       allPostsData
@@ -33,7 +35,7 @@ const Home = ({ allPostsData }) => {
                 <Link href={`/posts/${id}`}>{title}</Link>
                 <br />
                 <small className={utilStyles.lightText}>
-                  <Date dateString={date} />
+                  {date}
                 </small>
               </li>
             ))}
